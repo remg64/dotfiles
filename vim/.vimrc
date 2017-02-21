@@ -32,8 +32,7 @@ set hlsearch            " highlight matches
 set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
-" space open/closes folds
-nnoremap <space> za
+nnoremap <space> za     " space open/closes folds
 set foldmethod=indent   " fold based on indent level
 " }}}
 
@@ -54,8 +53,6 @@ nnoremap <C-l> <C-w>l
 
 " LEADER SHORTCUTS {{{
 let mapleader=","       " leader is comma
-" toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -131,6 +128,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jay'
 " }}}
 
+" GUNDO {{{
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+" }}}
+
 " NERDTREE {{{
 nmap <F2> :NERDTreeToggle<CR>
 " }}}
@@ -189,16 +191,6 @@ let g:deoplete#enable_at_startup = 1
 
 " TAGBAR.VIM {{{
 nmap <F8> :TagbarToggle<CR>
-" }}}
-
-" LATEX-BOX {{{
-let s:extfname = expand("%:e")
-if s:extfname ==? "tex"
-        let g:LatexBox_split_type="new" " force horizontal split
-        let g:LatexBox_fold_sections=[ "part", "chapter", "section", "subsection", "subsubsection", "paragraph", "subparagraph" ]
-        " toggle TOC display
-        nmap <F5> :LatexTOCToggle<CR>
-endif
 " }}}
 
 " VIMTEX {{{
