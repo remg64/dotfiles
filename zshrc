@@ -1,1 +1,0 @@
-/home/remy/.zshrc
