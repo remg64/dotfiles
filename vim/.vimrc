@@ -115,7 +115,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'fcpg/vim-altscreen'
 Plug 'ryanoasis/vim-devicons'
-Plug 'josuegaleas/jay'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 " }}}
@@ -125,7 +125,7 @@ call plug#end()
 set laststatus=2
 " force use of powerline patched fonts
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'jay'
+let g:airline_theme = 'gruvbox'
 " }}}
 
 " GUNDO {{{
@@ -203,6 +203,7 @@ let g:vimtex_echo_ignore_wait = 1
 
 " COLOR {{{
 set t_Co=256		    " Use 256 colours (Use this setting only if your terminal support 256 colours)
+colorscheme gruvbox     " set vim colorscheme
 syntax enable           " enable syntax processing
 set background=dark		" set dark theme
 " }}}
