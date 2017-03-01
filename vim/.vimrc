@@ -94,24 +94,17 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on' :  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
-Plug 'alessandroyorba/despacio'
 Plug 'lervag/vimtex', { 'for' : 'tex' }
 Plug 'vim-scripts/pep8', { 'for' : 'python' }
 Plug 'myusuf3/numbers.vim'
-if has('nvim')
-        Plug 'Shougo/deoplete.nvim'
-else
-        Plug 'Shougo/neocomplete.vim'
-endif
+Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'majutsushi/tagbar'
-Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'fcpg/vim-altscreen'
 Plug 'ryanoasis/vim-devicons'
@@ -206,19 +199,6 @@ set t_Co=256		    " Use 256 colours (Use this setting only if your terminal supp
 colorscheme gruvbox     " set vim colorscheme
 syntax enable           " enable syntax processing
 set background=dark		" set dark theme
-" }}}
-
-" SYNTASTIC {{{
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_cpp_remove_include_errors = 1
-"let g:syntastic_c_remove_include_errors = 1
 " }}}
 
 " FOLDING VIMRC {{{
