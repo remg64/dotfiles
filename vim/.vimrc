@@ -201,6 +201,11 @@ syntax enable           " enable syntax processing
 set background=dark		" set dark theme
 " }}}
 
+"{{{ HACK
+" Allow saving of files as sudo when I forgot to start vim using sudo
+cmap w!! w !sudo tee > /dev/null %
+"}}}
+
 " FOLDING VIMRC {{{
 set modelines=1
 " vim:foldmethod=marker:foldlevel=0
