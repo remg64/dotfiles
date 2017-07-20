@@ -90,24 +90,45 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'bling/vim-airline'
+" lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'
+" A collection of themes for vim-airline
 Plug 'vim-airline/vim-airline-themes'
+" Handles bracketed-paste-mode in vim (aka. automatic `:set paste`)
 Plug 'ConradIrwin/vim-bracketed-paste'
+" visualize your Vim undo tree
 Plug 'sjl/gundo.vim'
+" A tree explorer plugin for vim
 Plug 'scrooloose/nerdtree', { 'on' :  'NERDTreeToggle' }
+" Vim plugin for intensely orgasmic commenting
 Plug 'scrooloose/nerdcommenter'
+" Asynchronous Lint Engine
 Plug 'w0rp/ale'
+" A modern vim plugin for editing LaTeX files
 Plug 'lervag/vimtex', { 'for' : 'tex' }
+" Check your python source files with PEP8
 Plug 'vim-scripts/pep8', { 'for' : 'python' }
+" Much better OCaml indentation, and more...
+Plug 'vim-scripts/omlet.vim'
+" numbers.vim is a vim plugin for better line numbers
 Plug 'myusuf3/numbers.vim'
+" Next generation completion framework
 Plug 'Shougo/neocomplete.vim'
+" snippet support to Vim
 Plug 'Shougo/neosnippet.vim'
+" The standard snippets repository for neosnippet
 Plug 'Shougo/neosnippet-snippets'
+" Vim plugin that displays tags in a window, ordered by scope
 Plug 'majutsushi/tagbar'
+" a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+" use CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'tpope/vim-speeddating'
+" Alternate screen setup for terminal Vim
 Plug 'fcpg/vim-altscreen'
+" Adds file type glyphs/icons
 Plug 'ryanoasis/vim-devicons'
+" Retro groove color scheme for Vim
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -147,12 +168,12 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
@@ -173,7 +194,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
                         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " For conceal markers.
 if has('conceal')
-        set conceallevel=2 concealcursor=niv
+        set conceallevel=2 concealcursor=nc
 endif
 " }}}
 
@@ -188,6 +209,27 @@ nmap <F8> :TagbarToggle<CR>
 
 " VIMTEX {{{
 let g:vimtex_echo_ignore_wait = 1
+let g:vimtex_disable_version_warning = 1
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+let g:vimtex_fold_manual = 1
+if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+                        \ '\v\\%('
+                        \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                        \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+                        \ . '|hyperref\s*\[[^]]*'
+                        \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                        \ . '|%(include%(only)?|input)\s*\{[^}]*'
+                        \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+                        \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+                        \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+                        \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+                        \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+                        \ . '|\a*'
+                        \ . ')'
+
 " }}}
 
 " FZF {{{
