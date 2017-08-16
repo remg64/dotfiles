@@ -82,6 +82,9 @@ alias zshconfig="$EDITOR ~/.zshrc"
 # previous command with sudo
 alias please='sudo $(fc -ln -1)'
 
+# pacaur update alias
+alias up='pacaur -Suy --devel --needed'
+
 # enable Ctrl-T for termite
 source /etc/profile.d/vte.sh
 

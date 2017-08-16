@@ -53,6 +53,7 @@ nnoremap <C-l> <C-w>l
 
 " LEADER SHORTCUTS {{{
 let mapleader=","       " leader is comma
+let maplocalleader = ","
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -109,7 +110,7 @@ Plug 'lervag/vimtex', { 'for' : 'tex' }
 " Check your python source files with PEP8
 Plug 'vim-scripts/pep8', { 'for' : 'python' }
 " Much better OCaml indentation, and more...
-Plug 'vim-scripts/omlet.vim'
+"Plug 'vim-scripts/omlet.vim'
 " numbers.vim is a vim plugin for better line numbers
 Plug 'myusuf3/numbers.vim'
 " Next generation completion framework
@@ -130,6 +131,8 @@ Plug 'fcpg/vim-altscreen'
 Plug 'ryanoasis/vim-devicons'
 " Retro groove color scheme for Vim
 Plug 'morhetz/gruvbox'
+" OCP-indent for vim
+Plug 'let-def/ocp-indent-vim', { 'for' : 'ocaml' }
 
 call plug#end()
 " }}}
@@ -198,11 +201,6 @@ if has('conceal')
 endif
 " }}}
 
-" DEOPLETE.VIM {{{
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-" }}}
-
 " TAGBAR.VIM {{{
 nmap <F8> :TagbarToggle<CR>
 " }}}
@@ -215,6 +213,7 @@ let g:vimtex_fold_manual = 1
 if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
 endif
+" enable completion for latex with vimtex
 let g:neocomplete#sources#omni#input_patterns.tex =
                         \ '\v\\%('
                         \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
@@ -229,11 +228,20 @@ let g:neocomplete#sources#omni#input_patterns.tex =
                         \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
                         \ . '|\a*'
                         \ . ')'
-
 " }}}
 
-" FZF {{{
-"nmap <F6> :FZF<CR>
+" OCP-INDENT {{{
+set rtp+=~/.vim/plugged/ocp-indent-vim
+"}}}
+
+" MERLIN {{{
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+endif
+" enable completion for ocaml with merlin
+let g:neocomplete#sources#omni#input_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
 " }}}
 
 " COLOR {{{
