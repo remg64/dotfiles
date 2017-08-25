@@ -109,8 +109,6 @@ Plug 'w0rp/ale'
 Plug 'lervag/vimtex', { 'for' : 'tex' }
 " Check your python source files with PEP8
 Plug 'vim-scripts/pep8', { 'for' : 'python' }
-" Much better OCaml indentation, and more...
-"Plug 'vim-scripts/omlet.vim'
 " numbers.vim is a vim plugin for better line numbers
 Plug 'myusuf3/numbers.vim'
 " Next generation completion framework
